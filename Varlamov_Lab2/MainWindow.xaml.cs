@@ -24,5 +24,15 @@ namespace Varlamov_Lab2
         {
             InitializeComponent();
         }
+
+        private void Exit(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
+
+        private void AboutProgram(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("");
+        }
     }
 }
