@@ -24,7 +24,7 @@
             <MenuItem Header="Выход"
                       Click="Exit"/>
         </Menu>
-
+        <Label></Label>
         <GroupBox Grid.Column="1"
                   Grid.Row="2">
             <Grid>
