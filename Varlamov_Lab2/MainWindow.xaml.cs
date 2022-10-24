@@ -18,21 +18,22 @@ namespace Varlamov_Lab2
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
-    {
-        public MainWindow()
-        {
-            InitializeComponent();
-        }
-
-        private void Exit(object sender, RoutedEventArgs e)
-        {
-            Close();
-        }
-
-        private void AboutProgram(object sender, RoutedEventArgs e)
-        {
-            MessageBox.Show("");
-        }
-    }
-}
+    public partial class MainWindow : Window                                                                     
+    {                                                                                                            
+        public MainWindow()                                                                                      
+        {                                                                                                        
+            InitializeComponent();                                                                               
+        }                                                                                                        
+                                                                                                                 
+        private void Exit(object sender, RoutedEventArgs e)                                                      
+        {                                                                                                        
+            Close();                                                                                             
+        }                                                                                                        
+                                                                                                                 
+        private void AboutProgram(object sender, RoutedEventArgs e)                                              
+        {                                                                                                        
+            MessageBox.Show("");                                                                                 
+        }                                                                                                        
+    }                                                                                                            
+}                                                                                                                
+                                                                                                                 
