@@ -1,4 +1,5 @@
 using System;
+using System.Data;
 
 namespace LibArray
 {
@@ -15,7 +16,7 @@ namespace LibArray
             Capacity = capacity;
         }
 
-        public int Lenght { get; private set; }
+        public int Length { get; private set; }
 
         public T this[int index]
         {
@@ -40,7 +41,7 @@ namespace LibArray
         private int EnsureCapacity(int itemsLenght = 0)
         {
             int tempCapacity = Capacity;
-            while (itemsLenght + Lenght >= tempCapacity)
+            while (itemsLenght + Length >= tempCapacity)
             {
                 tempCapacity *= 2;
             }
@@ -50,26 +51,38 @@ namespace LibArray
         public void Add(T item)
         {
             Capacity = EnsureCapacity();
-            _items[Lenght++] = item;
+            _items[Length++] = item;
         }
 
-        public void AddRange(T[] item)
+        public void AddRange(T[] items)
         {
             Capacity = EnsureCapacity();
-            Array.Resize(ref _items, item.Length);
+            Array.Copy(items, 0, _items, 0, items.Length);
         }
 
         public void Clear()
         {
             Capacity = _defaultCapacity;
-            Lenght = 0;
+            Length = 0;
             _items = new T[Capacity];
 
         }
 
-        public bool Remove(T item)
+        public DataTable ToDataTable()
         {
-
+            var res = new DataTable();
+            for (int i = 0; i < Length; i++)
+            {
+                res.Columns.Add("col" + (i + 1), typeof(T));
+            }
+            var row = res.NewRow();
+            for (int i = 0; i < Length; i++)
+            {
+                row[i] = _items[i];
+            }
+            res.Rows.Add(row);
+            return res;
         }
+
     }
 }

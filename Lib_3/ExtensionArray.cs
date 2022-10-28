@@ -1,21 +1,19 @@
 using System;
 using System.Reflection.Metadata;
 using System.Runtime.CompilerServices;
+using LibArray;
 
 namespace Lib_3
 {
-    public class ExtensionArray
+    public static class ExtensionArray
     {
-        public static int[] ArrayCreate(int count, int min, int max)
+        public static void ArrayCreate(this Array<int> numbers)
         {
-            int[] mas = new int[count];
             Random rnd = new();
-            for (int i = 0; i < mas.Length; i++)
+            for (int i = 0; i < numbers.Capacity; i++)
             {
-                mas[i] = rnd.Next(min, max);
+                numbers.Add(rnd.Next(1, 100));
             }
-            return mas;
         }
-
     }
 }

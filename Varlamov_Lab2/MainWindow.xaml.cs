@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Lib_3;
+using LibArray;
 
 namespace Varlamov_Lab2
 {
@@ -22,18 +24,70 @@ namespace Varlamov_Lab2
     {                                                                                                            
         public MainWindow()                                                                                      
         {                                                                                                        
-            InitializeComponent();                                                                               
-        }                                                                                                        
+            InitializeComponent();
+            this.Height += 25;
+        }
+
+        Array<double> array = new Array<double>(8);
+
+        private void AboutProgram(object sender, RoutedEventArgs e)                                              
+        {                                                                                                        
+            MessageBox.Show("");                                                                                 
+        }
                                                                                                                  
         private void Exit(object sender, RoutedEventArgs e)                                                      
         {                                                                                                        
             Close();                                                                                             
         }                                                                                                        
                                                                                                                  
-        private void AboutProgram(object sender, RoutedEventArgs e)                                              
-        {                                                                                                        
-            MessageBox.Show("");                                                                                 
-        }                                                                                                        
+
+        private void ArrayCreate(object sender, RoutedEventArgs e)
+        {
+            if (!int.TryParse(ArraySize.Text, out int count))
+            {
+                MessageBox.Show("Неверный размер массива");
+                return;
+            }
+
+            if (count <= 0)
+            {
+                MessageBox.Show("Размер массива должен быть больше 0");
+                return;
+            }
+
+            Array<int> array = new Array<int>(count);
+
+            Random rnd = new Random(count);
+
+            array.ArrayCreate();
+
+            ArrayOutput.ItemsSource = array.ToDataTable().DefaultView;
+        }
+
+        private void ArrayAdd(object sender, RoutedEventArgs e)
+        {
+            string[] massiveString = ArrayAdded.Text.Split(new string[] { " " }, StringSplitOptions.RemoveEmptyEntries);
+            double[] numbers = new double[massiveString.Length];
+
+            for (int i = 0; i < massiveString.Length; i++)
+            {
+                int.TryParse(massiveString[i], out int value);
+                numbers[i] = value;
+            }
+
+            array.AddRange(numbers);
+            ArrayOutput.ItemsSource = array.ToDataTable().DefaultView;
+        }
+
+        private void ArrayClear(object sender, RoutedEventArgs e)
+        {
+            //adkagd
+        }
+
+        private void ArrayDiff(object sender, RoutedEventArgs e)
+        {
+
+        }
     }                                                                                                            
 }                                                                                                                
                                                                                                                  

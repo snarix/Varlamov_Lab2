@@ -12,6 +12,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\LibArray\LibArray.csproj" />
+    <ProjectReference Include="..\Lib_3\Lib_3.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Resource Include="core.png" />
   </ItemGroup>
 

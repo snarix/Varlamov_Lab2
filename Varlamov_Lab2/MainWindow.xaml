@@ -24,7 +24,7 @@
             <MenuItem Header="Выход"
                       Click="Exit"/>
         </Menu>
-        <Label></Label>
+
         <GroupBox Grid.Column="1"
                   Grid.Row="2">
             <Grid>
@@ -39,12 +39,38 @@
 
         <DataGrid Grid.RowSpan="1" 
                   Grid.ColumnSpan="2"
-                  Margin="5,20,5,5"/>
+                  Margin="5,20,5,5"
+                  x:Name="ArrayOutput"/>
 
         <GroupBox Grid.Row="2"
                   Header="Вычисления над массивом">
             <Grid>
+                <Label Content="Размер массива" 
+                       Margin="49,0,229,162"/>
+                <TextBox Margin="10,20,205,150"
+                         x:Name="ArraySize"/>
+                <Button Content="Создать"
+                        Margin="10,50,205,120"
+                        Click="ArrayCreate"/>
+                <TextBox Margin="205,20,10,150"
+                         x:Name="ArrayAdded"/>
+                <Button Content="Добавить"
+                        Margin="205,50,10,120"
+                        Click="ArrayAdd"/>
+                <Button Content="Очистить"
+                        Margin="205,130,10,40"
+                        Click="ArrayClear"/>
                 
+                
+                
+                <Button Content="Найти разницу чисел"
+                        Margin="10,130,205,40"
+                        Click="ArrayDiff"/>
+                <TextBox Margin="10,160,205,10"
+                         x:Name="ArrayDifference"/>
+
+
+
             </Grid>
         </GroupBox>
 
