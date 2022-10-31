@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Data;
 
 namespace LibArray
@@ -20,13 +21,13 @@ namespace LibArray
 
         public T this[int index]
         {
-            get { return _items[index]; }
-            set { _items[index] = value; }
+            get { return _items[index]; } 
+            set { _items[index] = value; } 
         }
 
         public int Capacity
         {
-            get => _capacity;
+            get => _capacity; 
             private set
             {
                 if (value == _capacity)
@@ -38,6 +39,12 @@ namespace LibArray
             }
         }
 
+        /// <summary>
+        /// Увеличение размера массива
+        /// </summary>
+        /// <param name="itemsLenght">Длина массива</param>
+        /// <returns></returns>
+
         private int EnsureCapacity(int itemsLenght = 0)
         {
             int tempCapacity = Capacity;
@@ -48,25 +55,44 @@ namespace LibArray
             return tempCapacity;
         }
 
+        /// <summary>
+        /// Добавление элемента
+        /// </summary>
+        /// <param name="item">Элемент для добавления</param>
+
         public void Add(T item)
         {
             Capacity = EnsureCapacity();
             _items[Length++] = item;
         }
 
+        /// <summary>
+        /// Добавление массива уже к существующему
+        /// </summary>
+        /// <param name="items">Массив для добавления</param>
+
         public void AddRange(T[] items)
         {
-            Capacity = EnsureCapacity();
-            Array.Copy(items, 0, _items, 0, items.Length);
+            Capacity = EnsureCapacity(items.Length);
+            Array.Copy(items, 0, _items, Length, items.Length);
+            Length += items.Length;
         }
+
+        /// <summary>
+        /// Очищение 
+        /// </summary>
 
         public void Clear()
         {
             Capacity = _defaultCapacity;
             Length = 0;
             _items = new T[Capacity];
-
         }
+
+        /// <summary>
+        /// Вывод массива на экран
+        /// </summary>
+        /// <returns></returns>
 
         public DataTable ToDataTable()
         {
@@ -84,5 +110,24 @@ namespace LibArray
             return res;
         }
 
+        /// <summary>
+        /// Очищение выбранного элемента
+        /// </summary>
+        /// <param name="item">Удаляющийся элемент</param>
+        /// <returns></returns>
+
+        public bool Remove(T item)
+        {
+            int x = Array.IndexOf(_items, item);
+
+            if (x >= 0)
+            {
+                Array.Copy(_items, x + 1, _items, x, Capacity - (x + 1));
+                Capacity--;
+                Length--;
+                return true;
+            }
+            return false;
+        }
     }
 }

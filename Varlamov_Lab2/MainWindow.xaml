@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Varlamov_Lab2"
         mc:Ignorable="d"
-        Title="Практичсекая работа №2" Height="450" Width="800" Icon="/core.png">
+        Title="Практичсекая работа №2" Height="450" Width="800" Icon="/core.png" ResizeMode="CanMinimize">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition/>
@@ -46,36 +46,40 @@
                   Header="Вычисления над массивом">
             <Grid>
                 <Label Content="Размер массива" 
-                       Margin="49,0,229,162"/>
+                       Margin="42,0,236,162"/>
                 <TextBox Margin="10,20,205,150"
                          x:Name="ArraySize"/>
                 <Button Content="Создать"
-                        Margin="10,50,205,120"
-                        Click="ArrayCreate"/>
-                <TextBox Margin="205,20,10,150"
+                        Margin="205,20,10,150"
+                        Click="ArrayCreate"
+                        IsEnabled="True"
+                        x:Name="Create"/>
+                <TextBox Margin="10,49,205,121"
                          x:Name="ArrayAdded"/>
                 <Button Content="Добавить"
-                        Margin="205,50,10,120"
-                        Click="ArrayAdd"/>
+                        Margin="205,49,10,121"
+                        Click="ArrayAdd"
+                        IsEnabled="False"
+                        x:Name="Add"/>
                 <Button Content="Очистить"
-                        Margin="205,130,10,40"
-                        Click="ArrayClear"/>
-                
-                
-                
+                        Margin="205,160,10,10"
+                        Click="ArrayClear"
+                        IsEnabled="False"
+                        x:Name="Clear"/>
                 <Button Content="Найти разницу чисел"
-                        Margin="10,130,205,40"
-                        Click="ArrayDiff"/>
-                <TextBox Margin="10,160,205,10"
-                         x:Name="ArrayDifference"/>
-
-
-
+                        Margin="10,160,204,10"
+                        Click="ArrayDiff"
+                        IsEnabled="False"
+                        x:Name="Diff"/>
+                
+                <TextBox Margin="11,78,204,92"
+                         x:Name="RemoveNumbers"/>
+                <Button Content="Удалить числа"
+                        Margin="205,78,10,92"
+                        Click="NumbersDelete"
+                        IsEnabled="False"
+                        x:Name="Delete"/>
             </Grid>
         </GroupBox>
-
-
-
-
     </Grid>
 </Window>
